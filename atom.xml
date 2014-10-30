@@ -3,9 +3,9 @@
   <title><![CDATA[TaurenDruid's Blog]]></title>
   <subtitle><![CDATA[MySQL Linux Oracle Python ..]]></subtitle>
   <link href="/atom.xml" rel="self"/>
-  <link href="http://singlemice.github.io/"/>
-  <updated>2014-10-30T09:17:19.813Z</updated>
-  <id>http://singlemice.github.io/</id>
+  <link href="http://blog.taurendruid.com/"/>
+  <updated>2014-10-30T09:28:28.974Z</updated>
+  <id>http://blog.taurendruid.com/</id>
   
   <author>
     <name><![CDATA[TaurenDruid]]></name>
@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[Oracle Create DBLink]]></title>
-    <link href="http://singlemice.github.io/2014/10/30/Oracle-Create-DBLink/"/>
-    <id>http://singlemice.github.io/2014/10/30/Oracle-Create-DBLink/</id>
+    <link href="http://blog.taurendruid.com/2014/10/30/Oracle-Create-DBLink/"/>
+    <id>http://blog.taurendruid.com/2014/10/30/Oracle-Create-DBLink/</id>
     <published>2014-10-30T07:48:43.000Z</published>
     <updated>2014-10-30T09:17:15.000Z</updated>
     <content type="html"><![CDATA[<h2 id="验证用户权限">验证用户权限</h2>
@@ -45,18 +45,18 @@
     
     </summary>
     
-      <category term="dblink" scheme="http://singlemice.github.io/tags/dblink/"/>
+      <category term="dblink" scheme="http://blog.taurendruid.com/tags/dblink/"/>
     
-      <category term="oracle" scheme="http://singlemice.github.io/tags/oracle/"/>
+      <category term="oracle" scheme="http://blog.taurendruid.com/tags/oracle/"/>
     
-      <category term="oracle" scheme="http://singlemice.github.io/categories/oracle/"/>
+      <category term="oracle" scheme="http://blog.taurendruid.com/categories/oracle/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Linux下安装微软雅黑字体]]></title>
-    <link href="http://singlemice.github.io/2014/09/18/linux-fonts-install/"/>
-    <id>http://singlemice.github.io/2014/09/18/linux-fonts-install/</id>
+    <link href="http://blog.taurendruid.com/2014/09/18/linux-fonts-install/"/>
+    <id>http://blog.taurendruid.com/2014/09/18/linux-fonts-install/</id>
     <published>2014-09-18T06:34:17.000Z</published>
     <updated>2014-10-30T08:17:09.000Z</updated>
     <content type="html"><![CDATA[<p>   将win7中得到字体文件，并把字体文件放到到/usr/share/fonts/zh_CN文件夹中：</p>
@@ -71,18 +71,18 @@
     
     </summary>
     
-      <category term="fonts" scheme="http://singlemice.github.io/tags/fonts/"/>
+      <category term="fonts" scheme="http://blog.taurendruid.com/tags/fonts/"/>
     
-      <category term="linux" scheme="http://singlemice.github.io/tags/linux/"/>
+      <category term="linux" scheme="http://blog.taurendruid.com/tags/linux/"/>
     
-      <category term="Linux" scheme="http://singlemice.github.io/categories/Linux/"/>
+      <category term="Linux" scheme="http://blog.taurendruid.com/categories/Linux/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[HEXO 介绍]]></title>
-    <link href="http://singlemice.github.io/2014/09/10/hello-world/"/>
-    <id>http://singlemice.github.io/2014/09/10/hello-world/</id>
+    <link href="http://blog.taurendruid.com/2014/09/10/hello-world/"/>
+    <id>http://blog.taurendruid.com/2014/09/10/hello-world/</id>
     <published>2014-09-10T06:34:17.000Z</published>
     <updated>2014-10-30T08:28:41.000Z</updated>
     <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
