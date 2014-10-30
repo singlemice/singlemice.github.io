@@ -4,15 +4,13 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>TaurenDruid&#39;s Blog</title>
+    <title>Oracle Create DBLink | TaurenDruid&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="TaurenDruid">
     
-    <meta name="description" content="title: “Oracle Create DBLink”date: 2014-10-30 15:48:43tags:－ dblink－ oraclecategories: 
-－ oracle
-1、首先确认用户有没有创建dblink的权限
-1select * from user_sys_privs ">
+    <meta name="description" content="1、首先确认用户有没有创建dblink的权限
+1select * from user_sys_privs where privilege like upper(&#39;%DATABASE LINK%&#39;);">
     
     
     
@@ -73,12 +71,12 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/10/30/Oracle-Create-DBLink/" title="" itemprop="url"></a>
+      <a href="/2014/10/30/Oracle-Create-DBLink/" title="Oracle Create DBLink" itemprop="url">Oracle Create DBLink</a>
   </h1>
   <p class="article-author">By
       <a href="http://singlemice.github.io/about" title="TaurenDruid" target="_blank">TaurenDruid</a>
   <p class="article-time">
-    <time datetime="2014-10-30T08:06:25.000Z" itemprop="datePublished">发表于10月 30 2014</time>
+    <time datetime="2014-10-30T07:48:43.000Z" itemprop="datePublished">发表于10月 30 2014</time>
     
   </p>
 </header>
@@ -88,13 +86,11 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#－_oracle"><span class="toc-number">1.</span> <span class="toc-text">－ oracle</span></a></li></ol>
+			
 		
 		</div>
 		
-		<p>title: “Oracle Create DBLink”<br>date: 2014-10-30 15:48:43<br>tags:<br>－ dblink<br>－ oracle<br>categories: </p>
-<h2 id="－_oracle">－ oracle</h2>
-<p><!--
+		<p><!--
     oracle 通过创建dblink 轻松实现跨库查询。
     --><br>1、首先确认用户有没有创建dblink的权限</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> user_sys_privs <span class="keyword">where</span> privilege <span class="keyword">like</span> <span class="keyword">upper</span>(<span class="string">'%DATABASE LINK%'</span>);</span></div></pre></td></tr></table></figure>
@@ -103,13 +99,23 @@
 	</div>
 		<footer class="article-footer clearfix">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/oracle/">oracle</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/dblink-oracle/">dblink oracle</a>
+  </div>
 
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://singlemice.github.io/2014/10/30/Oracle-Create-DBLink/" data-title="TaurenDruid&#39;s Blog" data-tsina="undefined" class="share clearfix">
+  <div data-url="http://singlemice.github.io/2014/10/30/Oracle-Create-DBLink/" data-title="Oracle Create DBLink | TaurenDruid&#39;s Blog" data-tsina="undefined" class="share clearfix">
   </div>
 
 </div>
@@ -144,6 +150,8 @@
 		
 			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
 		
+			<li><a href="/categories/oracle/" title="oracle">oracle<sup>1</sup></a></li>
+		
 		</ul>
 </div>
 
@@ -152,6 +160,8 @@
 <div class="tagslist">
 	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
+		
+			<li><a href="/tags/dblink-oracle/" title="dblink oracle">dblink oracle<sup>1</sup></a></li>
 		
 			<li><a href="/tags/fonts-linux/" title="fonts linux">fonts linux<sup>1</sup></a></li>
 		
