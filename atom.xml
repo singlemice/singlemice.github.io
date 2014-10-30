@@ -4,7 +4,7 @@
   <subtitle><![CDATA[MySQL Linux Oracle Python ..]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://singlemice.github.io/"/>
-  <updated>2014-10-30T08:11:45.787Z</updated>
+  <updated>2014-10-30T08:13:33.878Z</updated>
   <id>http://singlemice.github.io/</id>
   
   <author>
@@ -13,6 +13,29 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Oracle Create DBLink]]></title>
+    <link href="http://singlemice.github.io/2014/10/30/Oracle-Create-DBLink/"/>
+    <id>http://singlemice.github.io/2014/10/30/Oracle-Create-DBLink/</id>
+    <published>2014-10-30T07:48:43.000Z</published>
+    <updated>2014-10-30T08:13:28.000Z</updated>
+    <content type="html"><![CDATA[<p><!--
+    oracle 通过创建dblink 轻松实现跨库查询。
+    --><br>1、首先确认用户有没有创建dblink的权限</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> user_sys_privs <span class="keyword">where</span> privilege <span class="keyword">like</span> <span class="keyword">upper</span>(<span class="string">'%DATABASE LINK%'</span>);</span></div></pre></td></tr></table></figure>
+
+]]></content>
+    <summary type="html">
+    <![CDATA[oracle 通过创建dblink 轻松实现跨库查询。]]>
+    
+    </summary>
+    
+      <category term="dblink oracle" scheme="http://singlemice.github.io/tags/dblink-oracle/"/>
+    
+      <category term="oracle" scheme="http://singlemice.github.io/categories/oracle/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Linux下安装微软雅黑字体]]></title>
@@ -61,31 +84,6 @@
     <summary type="html">
     <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
     </summary>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[[object Object]]]></title>
-    <link href="http://singlemice.github.io/0000/01/01/Oracle-Create-DBLink/"/>
-    <id>http://singlemice.github.io/0000/01/01/Oracle-Create-DBLink/</id>
-    <published>-000001-12-31T16:00:00.000Z</published>
-    <updated>2014-10-30T08:11:41.000Z</updated>
-    <content type="html"><![CDATA[<p><!--
-    oracle 通过创建dblink 轻松实现跨库查询。
-    --><br>1、首先确认用户有没有创建dblink的权限</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> user_sys_privs <span class="keyword">where</span> privilege <span class="keyword">like</span> <span class="keyword">upper</span>(<span class="string">'%DATABASE LINK%'</span>);</span></div></pre></td></tr></table></figure>
-
-]]></content>
-    <summary type="html">
-    <![CDATA[<p><!--
-    oracle 通过创建dblink 轻松实现跨库查询。
-    --><br>1、首先确认用户有没有创建dblink的权限</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><]]>
-    </summary>
-    
-      <category term="dblink oracle" scheme="http://singlemice.github.io/tags/dblink-oracle/"/>
-    
-      <category term="oracle" scheme="http://singlemice.github.io/categories/oracle/"/>
     
   </entry>
   
