@@ -4,7 +4,7 @@
   <subtitle><![CDATA[MySQL Linux Oracle Python ..]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://singlemice.github.io/"/>
-  <updated>2014-10-30T08:11:04.031Z</updated>
+  <updated>2014-10-30T08:11:45.787Z</updated>
   <id>http://singlemice.github.io/</id>
   
   <author>
@@ -69,7 +69,7 @@
     <link href="http://singlemice.github.io/0000/01/01/Oracle-Create-DBLink/"/>
     <id>http://singlemice.github.io/0000/01/01/Oracle-Create-DBLink/</id>
     <published>-000001-12-31T16:00:00.000Z</published>
-    <updated>2014-10-30T08:10:57.000Z</updated>
+    <updated>2014-10-30T08:11:41.000Z</updated>
     <content type="html"><![CDATA[<p><!--
     oracle 通过创建dblink 轻松实现跨库查询。
     --><br>1、首先确认用户有没有创建dblink的权限</p>
