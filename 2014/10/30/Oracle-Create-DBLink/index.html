@@ -85,18 +85,29 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#验证用户权限"><span class="toc-number">1.</span> <span class="toc-text">验证用户权限</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#验证用户权限"><span class="toc-number">1.</span> <span class="toc-text">验证用户权限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#验证需要创建dblink用户的权限"><span class="toc-number">1.1.</span> <span class="toc-text">验证需要创建dblink用户的权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置tns"><span class="toc-number">1.2.</span> <span class="toc-text">配置tns</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建dblink"><span class="toc-number">1.3.</span> <span class="toc-text">创建dblink</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询数据"><span class="toc-number">1.4.</span> <span class="toc-text">查询数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意："><span class="toc-number">1.5.</span> <span class="toc-text">注意：</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h3 id="验证用户权限">验证用户权限</h3>
+		<h2 id="验证用户权限">验证用户权限</h2>
+<h3 id="验证需要创建dblink用户的权限">验证需要创建dblink用户的权限</h3>
 <p>1、首先确认用户有没有创建dblink的权限</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> user_sys_privs <span class="keyword">where</span> privilege <span class="keyword">like</span> <span class="keyword">upper</span>(<span class="string">'%DATABASE LINK%'</span>);</span></div></pre></td></tr></table></figure>
 
 <p>如是没有权限，用管理员角色给用户</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">grant</span> <span class="keyword">create</span> <span class="keyword">public</span> <span class="keyword">database</span> link <span class="keyword">to</span> &lt;username&gt;</span></div></pre></td></tr></table></figure>
 
-<p><em>dblink有三种权限：</em><br><em>CREATE DATABASE LINK; — 私有dblink</em><br><em>CREATE PUBLIC DATABASE LINK; — 所有用户可以使用</em><br><em>DROP PUBLIC DATABASE LINK; — 删除dblink</em></p>
+<p><em>dblink有三种权限：</em><br><strong>CREATE DATABASE LINK; — 私有dblink</strong><br><strong>CREATE PUBLIC DATABASE LINK; — 所有用户可以使用</strong><br><strong>DROP PUBLIC DATABASE LINK; — 删除dblink</strong></p>
+<h3 id="配置tns">配置tns</h3>
+<p>在$ORACLE_HOME/network/admin/tnsname.org中添加tns</p>
+<h3 id="创建dblink">创建dblink</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> link &lt;dblink name&gt; <span class="keyword">connect</span> <span class="keyword">to</span> &lt;username&gt; <span class="keyword">identified</span> <span class="keyword">by</span> &lt;<span class="keyword">password</span>&gt; <span class="keyword">using</span> <span class="string">'&lt;tns name&gt;'</span>;</span></div></pre></td></tr></table></figure>
+
+<h3 id="查询数据">查询数据</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select <span class="keyword">*</span> from <span class="variable">&lt;table_name&gt;</span><span class="comment">@&lt;dblink name&gt;;</span></div></pre></td></tr></table></figure>
+
+<h3 id="注意：">注意：</h3>
+<p></p><p><br>    DBlink 使用很简单 ，但是在使用中会出现锁，每次查询时会数据库会创建一个连接，dblink一般不会自动释放，如果大量dblink查询，可能会导致系统无法正常运行。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
