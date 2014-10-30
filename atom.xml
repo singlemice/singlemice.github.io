@@ -4,7 +4,7 @@
   <subtitle><![CDATA[MySQL Linux Oracle Python ..]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://singlemice.github.io/"/>
-  <updated>2014-10-30T05:54:08.257Z</updated>
+  <updated>2014-10-30T08:04:40.546Z</updated>
   <id>http://singlemice.github.io/</id>
   
   <author>
@@ -13,6 +13,27 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[]]></title>
+    <link href="http://singlemice.github.io/2014/10/30/Oracle-Create-DBLink/"/>
+    <id>http://singlemice.github.io/2014/10/30/Oracle-Create-DBLink/</id>
+    <published>2014-10-30T08:04:36.000Z</published>
+    <updated>2014-10-30T08:04:36.000Z</updated>
+    <content type="html"><![CDATA[<p>title: Oracle Create DBLink<br>date: 2014-10-30 15:48:43<br>tags:<br>－ dblink<br>－ oracle<br>categories: </p>
+<h2 id="－_oracle">－ oracle</h2>
+<p><!--
+    oracle 通过创建dblink 轻松实现跨库查询。
+    --><br>1、首先确认用户有没有创建dblink的权限</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> user_sys_privs <span class="keyword">where</span> privilege <span class="keyword">like</span> <span class="keyword">upper</span>(<span class="string">'%DATABASE LINK%'</span>);</span></div></pre></td></tr></table></figure>
+
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>title: Oracle Create DBLink<br>date: 2014-10-30 15:48:43<br>tags:<br>－ dblink<br>－ oracle<br>categories: </p>
+<h2 id="－_oracle">－ oracle<]]>
+    </summary>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Linux下安装微软雅黑字体]]></title>

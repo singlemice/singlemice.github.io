@@ -4,12 +4,15 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Linux下安装微软雅黑字体 | TaurenDruid&#39;s Blog</title>
+    <title>TaurenDruid&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="TaurenDruid">
     
-    <meta name="description" content="12345678910111213将win7中得到字体文件，并把字体文件放到到/usr/share/fonts/zh_CN文件夹中：　　　系统构建字体文件并刷新字体缓存　　　　#mkfontscale　　#mkfontdir　　#fc-cache -fv">
+    <meta name="description" content="title: Oracle Create DBLinkdate: 2014-10-30 15:48:43tags:－ dblink－ oraclecategories: 
+－ oracle
+1、首先确认用户有没有创建dblink的权限
+1select * from user_sys_privs wh">
     
     
     
@@ -70,12 +73,12 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/09/18/linux-fonts-install/" title="Linux下安装微软雅黑字体" itemprop="url">Linux下安装微软雅黑字体</a>
+      <a href="/2014/10/30/Oracle-Create-DBLink/" title="" itemprop="url"></a>
   </h1>
   <p class="article-author">By
       <a href="http://singlemice.github.io/about" title="TaurenDruid" target="_blank">TaurenDruid</a>
   <p class="article-time">
-    <time datetime="2014-09-18T06:34:17.000Z" itemprop="datePublished">发表于9月 18 2014</time>
+    <time datetime="2014-10-30T08:04:36.000Z" itemprop="datePublished">发表于10月 30 2014</time>
     
   </p>
 </header>
@@ -85,33 +88,28 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#－_oracle"><span class="toc-number">1.</span> <span class="toc-text">－ oracle</span></a></li></ol>
 		
 		</div>
 		
-		<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">将win7中得到字体文件，并把字体文件放到到/usr/share/fonts/zh_CN文件夹中：</div><div class="line"></div><div class="line">　</div><div class="line"></div><div class="line">　　系统构建字体文件并刷新字体缓存</div><div class="line"></div><div class="line">　　</div><div class="line"></div><div class="line">　　<span class="comment">#mkfontscale</span></div><div class="line"></div><div class="line">　　<span class="comment">#mkfontdir</span></div><div class="line"></div><div class="line">　　<span class="comment">#fc-cache -fv</span></div></pre></td></tr></table></figure>
+		<p>title: Oracle Create DBLink<br>date: 2014-10-30 15:48:43<br>tags:<br>－ dblink<br>－ oracle<br>categories: </p>
+<h2 id="－_oracle">－ oracle</h2>
+<p><!--
+    oracle 通过创建dblink 轻松实现跨库查询。
+    --><br>1、首先确认用户有没有创建dblink的权限</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> user_sys_privs <span class="keyword">where</span> privilege <span class="keyword">like</span> <span class="keyword">upper</span>(<span class="string">'%DATABASE LINK%'</span>);</span></div></pre></td></tr></table></figure>
 
   
 	</div>
 		<footer class="article-footer clearfix">
 
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Linux/">Linux</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/fonts-linux/">fonts linux</a>
-  </div>
 
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://singlemice.github.io/2014/09/18/linux-fonts-install/" data-title="Linux下安装微软雅黑字体 | TaurenDruid&#39;s Blog" data-tsina="undefined" class="share clearfix">
+  <div data-url="http://singlemice.github.io/2014/10/30/Oracle-Create-DBLink/" data-title="TaurenDruid&#39;s Blog" data-tsina="undefined" class="share clearfix">
   </div>
 
 </div>
@@ -120,19 +118,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2014/10/30/Oracle-Create-DBLink/" title="">
-  <strong>上一篇：</strong><br/>
-  <span>
-  (no title)</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2014/09/06/hello-world/"  title="Hello World">
+<a href="/2014/09/18/linux-fonts-install/"  title="Linux下安装微软雅黑字体">
  <strong>下一篇：</strong><br/> 
- <span>Hello World
+ <span>Linux下安装微软雅黑字体
 </span>
 </a>
 </div>
