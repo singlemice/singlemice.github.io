@@ -85,15 +85,18 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#验证用户权限"><span class="toc-number">1.</span> <span class="toc-text">验证用户权限</span></a></li></ol>
 		
 		</div>
 		
-		<p><!--
-    oracle 通过创建dblink 轻松实现跨库查询。
-    --><br>1、首先确认用户有没有创建dblink的权限</p>
+		<h3 id="验证用户权限">验证用户权限</h3>
+<p>1、首先确认用户有没有创建dblink的权限</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> user_sys_privs <span class="keyword">where</span> privilege <span class="keyword">like</span> <span class="keyword">upper</span>(<span class="string">'%DATABASE LINK%'</span>);</span></div></pre></td></tr></table></figure>
 
+<p>如是没有权限，用管理员角色给用户</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">grant</span> <span class="keyword">create</span> <span class="keyword">public</span> <span class="keyword">database</span> link <span class="keyword">to</span> &lt;username&gt;</span></div></pre></td></tr></table></figure>
+
+<p><em>dblink有三种权限：</em><br><em>CREATE DATABASE LINK; — 私有dblink</em><br><em>CREATE PUBLIC DATABASE LINK; — 所有用户可以使用</em><br><em>DROP PUBLIC DATABASE LINK; — 删除dblink</em></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -106,7 +109,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/dblink-oracle/">dblink oracle</a>
+  <span></span> <a href="/tags/dblink/">dblink</a><a href="/tags/oracle/">oracle</a>
   </div>
 
 
@@ -160,15 +163,27 @@
 	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
-			<li><a href="/tags/dblink-oracle/" title="dblink oracle">dblink oracle<sup>1</sup></a></li>
+			<li><a href="/tags/dblink/" title="dblink">dblink<sup>1</sup></a></li>
 		
-			<li><a href="/tags/fonts-linux/" title="fonts linux">fonts linux<sup>1</sup></a></li>
+			<li><a href="/tags/dblink-oracle/" title="dblink oracle">dblink oracle<sup>0</sup></a></li>
+		
+			<li><a href="/tags/fonts/" title="fonts">fonts<sup>1</sup></a></li>
+		
+			<li><a href="/tags/fonts-linux/" title="fonts linux">fonts linux<sup>0</sup></a></li>
+		
+			<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/oracle/" title="oracle">oracle<sup>1</sup></a></li>
 		
 		</ul>
 </div>
 
 
-  <div class="linkslist">
+  <div id="clustrmaps-widget"></div><script type="text/javascript">var _clustrmaps = {'url' : 'http://blog.taurendruid.com', 'user' : 1150146, 'server' : '3', 'id' : 'clustrmaps-widget', 'version' : 1, 'date' : '2014-10-30', 'lang' : 'zh', 'corners' : 'square' };(function (){ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'http://www3.clustrmaps.com/counter/map.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
+x);})();</script><noscript><a href="http://www3.clustrmaps.com/user/e8e118cc2"><img src="http://www3.clustrmaps.com/stats/maps-no_clusters/blog.taurendruid.com-thumb.jpg" alt="Locations of visitors to this page" /></a></noscript>
+
+
+<div class="linkslist">
   <p class="asidetitle">友情链接</p>
     <ul>
       <li><a href="http://blog.csdn.net/taurendruids" target="_blank" title="TaurenDruid">TaurenDruid's Blog</a></li>

@@ -4,7 +4,7 @@
   <subtitle><![CDATA[MySQL Linux Oracle Python ..]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://singlemice.github.io/"/>
-  <updated>2014-10-30T08:13:33.878Z</updated>
+  <updated>2014-10-30T08:57:11.876Z</updated>
   <id>http://singlemice.github.io/</id>
   
   <author>
@@ -19,19 +19,24 @@
     <link href="http://singlemice.github.io/2014/10/30/Oracle-Create-DBLink/"/>
     <id>http://singlemice.github.io/2014/10/30/Oracle-Create-DBLink/</id>
     <published>2014-10-30T07:48:43.000Z</published>
-    <updated>2014-10-30T08:13:28.000Z</updated>
-    <content type="html"><![CDATA[<p><!--
-    oracle 通过创建dblink 轻松实现跨库查询。
-    --><br>1、首先确认用户有没有创建dblink的权限</p>
+    <updated>2014-10-30T08:34:25.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="验证用户权限">验证用户权限</h3>
+<p>1、首先确认用户有没有创建dblink的权限</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> user_sys_privs <span class="keyword">where</span> privilege <span class="keyword">like</span> <span class="keyword">upper</span>(<span class="string">'%DATABASE LINK%'</span>);</span></div></pre></td></tr></table></figure>
 
+<p>如是没有权限，用管理员角色给用户</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">grant</span> <span class="keyword">create</span> <span class="keyword">public</span> <span class="keyword">database</span> link <span class="keyword">to</span> &lt;username&gt;</span></div></pre></td></tr></table></figure>
+
+<p><em>dblink有三种权限：</em><br><em>CREATE DATABASE LINK; — 私有dblink</em><br><em>CREATE PUBLIC DATABASE LINK; — 所有用户可以使用</em><br><em>DROP PUBLIC DATABASE LINK; — 删除dblink</em></p>
 ]]></content>
     <summary type="html">
     <![CDATA[oracle 通过创建dblink 轻松实现跨库查询。]]>
     
     </summary>
     
-      <category term="dblink oracle" scheme="http://singlemice.github.io/tags/dblink-oracle/"/>
+      <category term="dblink" scheme="http://singlemice.github.io/tags/dblink/"/>
+    
+      <category term="oracle" scheme="http://singlemice.github.io/tags/oracle/"/>
     
       <category term="oracle" scheme="http://singlemice.github.io/categories/oracle/"/>
     
@@ -42,26 +47,33 @@
     <link href="http://singlemice.github.io/2014/09/18/linux-fonts-install/"/>
     <id>http://singlemice.github.io/2014/09/18/linux-fonts-install/</id>
     <published>2014-09-18T06:34:17.000Z</published>
-    <updated>2014-10-30T08:05:52.000Z</updated>
-    <content type="html"><![CDATA[<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">将win7中得到字体文件，并把字体文件放到到/usr/share/fonts/zh_CN文件夹中：</div><div class="line"></div><div class="line">　</div><div class="line"></div><div class="line">　　系统构建字体文件并刷新字体缓存</div><div class="line"></div><div class="line">　　</div><div class="line"></div><div class="line">　　<span class="comment">#mkfontscale</span></div><div class="line"></div><div class="line">　　<span class="comment">#mkfontdir</span></div><div class="line"></div><div class="line">　　<span class="comment">#fc-cache -fv</span></div></pre></td></tr></table></figure>
+    <updated>2014-10-30T08:17:09.000Z</updated>
+    <content type="html"><![CDATA[<p>   将win7中得到字体文件，并把字体文件放到到/usr/share/fonts/zh_CN文件夹中：</p>
+<p>　</p>
+<p>　　系统构建字体文件并刷新字体缓存</p>
+<p>　　</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">　　<span class="comment">#mkfontscale</span></div><div class="line"></div><div class="line">　　<span class="comment">#mkfontdir</span></div><div class="line"></div><div class="line">　　<span class="comment">#fc-cache -fv</span></div></pre></td></tr></table></figure>
 
 ]]></content>
     <summary type="html">
-    <![CDATA[<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div]]>
+    <![CDATA[Linux下安装微软雅黑字体]]>
+    
     </summary>
     
-      <category term="fonts linux" scheme="http://singlemice.github.io/tags/fonts-linux/"/>
+      <category term="fonts" scheme="http://singlemice.github.io/tags/fonts/"/>
+    
+      <category term="linux" scheme="http://singlemice.github.io/tags/linux/"/>
     
       <category term="Linux" scheme="http://singlemice.github.io/categories/Linux/"/>
     
   </entry>
   
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <link href="http://singlemice.github.io/2014/09/06/hello-world/"/>
-    <id>http://singlemice.github.io/2014/09/06/hello-world/</id>
-    <published>2014-09-06T04:15:13.000Z</published>
-    <updated>2014-09-06T04:15:13.000Z</updated>
+    <title><![CDATA[HEXO 介绍]]></title>
+    <link href="http://singlemice.github.io/2014/09/10/hello-world/"/>
+    <id>http://singlemice.github.io/2014/09/10/hello-world/</id>
+    <published>2014-09-10T06:34:17.000Z</published>
+    <updated>2014-10-30T08:28:41.000Z</updated>
     <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick_Start">Quick Start</h2>
 <h3 id="Create_a_new_post">Create a new post</h3>
