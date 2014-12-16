@@ -4,7 +4,7 @@
   <subtitle><![CDATA[MySQL Linux Oracle Python ..]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.taurendruid.com/"/>
-  <updated>2014-12-16T08:49:15.430Z</updated>
+  <updated>2014-12-16T08:59:08.136Z</updated>
   <id>http://blog.taurendruid.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://blog.taurendruid.com/2014/12/16/vagrant-install/"/>
     <id>http://blog.taurendruid.com/2014/12/16/vagrant-install/</id>
     <published>2014-12-16T08:08:58.000Z</published>
-    <updated>2014-12-16T08:48:51.000Z</updated>
+    <updated>2014-12-16T08:58:56.000Z</updated>
     <content type="html"><![CDATA[<h3 id="安装vagrant">安装vagrant</h3>
 <p>vagrant 是基于virtualbox的，首先安装virtual vix<br>通过下面页面可以下载相关版本：<br>’‘’<br><a href="https://www.vagrantup.com/downloads" target="_blank" rel="external">https://www.vagrantup.com/downloads</a><br>‘’‘<br>mac环境下，下载<a href="https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.1.dmg进行安装" target="_blank" rel="external">https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.1.dmg进行安装</a></p>
 <h4 id="创建工程目录">创建工程目录</h4>
@@ -27,21 +27,22 @@
 <pre><code><span class="built_in">cd</span> flaskweb
 </code></pre><p></p>
 <h5 id="添加box">添加box</h5>
-<p>可以通过 <a href="https://vagrantcloud.com/discover/featured" target="_blank" rel="external">Vagrant Cloud website </a> 下载使用，默认下载到当前目录下。<br>‘’’<br>vagrant box add ubuntu/trusty64  ##默认添加到base</p>
-<h5 id="此处添加了一个本地box">此处添加了一个本地box</h5>
-<p>vagrant box add flaskweb centos65-x86_64-20140116.box<br>‘’’</p>
-<p>vagrant box command<br>‘’’<br>vagrant box<br>Usage: vagrant box <subcommand> [<args>]</args></subcommand></p>
-<p>Available subcommands:<br>     add<br>     list<br>     outdated<br>     remove<br>     repackage<br>     update</p>
-<p>vagrant box list<br>centos65 (virtualbox, 0)<br>flaskweb (virtualbox, 0)<br>‘’’</p>
+<p>可以通过 <a href="https://vagrantcloud.com/discover/featured" target="_blank" rel="external">Vagrant Cloud website </a> 下载使用，默认下载到当前目录下。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vagrant <span class="keyword">box</span> add ubuntu/trusty64  ##默认添加到base</div><div class="line"></div><div class="line">#####此处添加了一个本地<span class="keyword">box</span></div><div class="line">vagrant <span class="keyword">box</span> add flaskweb centos65-x86_64-<span class="number">20140116</span>.<span class="keyword">box</span></div></pre></td></tr></table></figure>
+
+<p>vagrant box command</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="input"><span class="prompt">vagrant box</span></span></div><div class="line">Usage: vagrant box &lt;subcommand&gt; [&lt;args&gt;]</div><div class="line"></div><div class="line"><span class="constant">Available</span> <span class="symbol">subcommands:</span></div><div class="line">     add</div><div class="line">     list</div><div class="line">     outdated</div><div class="line">     remove</div><div class="line">     repackage</div><div class="line">     update</div><div class="line"></div><div class="line"></div><div class="line">vagrant box list</div><div class="line">centos65 (virtualbox, <span class="number">0</span>)</div><div class="line">flaskweb (virtualbox, <span class="number">0</span>)</div></pre></td></tr></table></figure>
+
 <h4 id="初始化vagrant_模板文件">初始化vagrant 模板文件</h4>
-<p>‘’’<br> vagrant init<br>‘’’</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vagrant <span class="keyword">init</span></div></pre></td></tr></table></figure>
+
 <h4 id="配置vagrant">配置vagrant</h4>
-<p>下载box后，我们需要告诉vagrant 当前项目中使用哪一个box,<br>‘’’<br>vi Vagrantfile</p>
-<h1 id="Every_Vagrant_virtual_environment_requires_a_box_to_build_off_of-">Every Vagrant virtual environment requires a box to build off of.</h1>
-<p>  config.vm.box = “base”</p>
-<h1 id="Every_Vagrant_virtual_environment_requires_a_box_to_build_off_of--1">Every Vagrant virtual environment requires a box to build off of.</h1>
-<p>  config.vm.box = “flaskweb”<br>‘’’</p>
-<p>虚拟机管理命令<br>‘’’<br>vagrant up #启动<br>vagrant reload #修改Vagrantfile快速使之快速生效<br>vagrant halt #关闭<br>vagrant suspend #暂停<br>vagrant resume #恢复<br>vagrant destroy #删除<br>‘’’</p>
+<p>下载box后，我们需要告诉vagrant 当前项目中使用哪一个box,</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">vi Vagrantfile</div><div class="line"></div><div class="line"># Every Vagrant <span class="keyword">virtual</span> environment requires a <span class="keyword">box</span> to build off of.</div><div class="line">  config.vm.<span class="keyword">box</span> = <span class="string">"base"</span></div><div class="line"></div><div class="line"># Every Vagrant <span class="keyword">virtual</span> environment requires a <span class="keyword">box</span> to build off of.</div><div class="line">  config.vm.<span class="keyword">box</span> = <span class="string">"flaskweb"</span></div></pre></td></tr></table></figure>
+
+<p>虚拟机管理命令</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vagrant up <span class="preprocessor">#启动</span></div><div class="line">vagrant reload <span class="preprocessor">#修改Vagrantfile快速使之快速生效</span></div><div class="line">vagrant halt <span class="preprocessor">#关闭</span></div><div class="line">vagrant suspend <span class="preprocessor">#暂停</span></div><div class="line">vagrant <span class="keyword">resume</span> <span class="preprocessor">#恢复</span></div><div class="line">vagrant destroy <span class="preprocessor">#删除</span></div></pre></td></tr></table></figure>
+
 ]]></content>
     <summary type="html">
     <![CDATA[vagrant 安装配置]]>
