@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>HEXO 介绍 | TaurenDruid&#39;s Blog</title>
+    <title>vagrant install | TaurenDruid&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="TaurenDruid">
     
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in ">
+    <meta name="description" itemprop="description" content="vagrant 安装配置">
     
     
     
@@ -70,12 +70,12 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/09/10/hello-world/" title="HEXO 介绍" itemprop="url">HEXO 介绍</a>
+      <a href="/2014/12/16/vagrant-install/" title="vagrant install" itemprop="url">vagrant install</a>
   </h1>
   <p class="article-author">By
       <a href="http://blog.taurendruid.com/about" title="TaurenDruid" target="_blank">TaurenDruid</a>
   <p class="article-time">
-    <time datetime="2014-09-10T06:34:17.000Z" itemprop="datePublished">发表于9月 10 2014</time>
+    <time datetime="2014-12-16T08:08:58.000Z" itemprop="datePublished">发表于12月 16 2014</time>
     
   </p>
 </header>
@@ -85,39 +85,53 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick_Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create_a_new_post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run_server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate_static_files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy_to_remote_sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装vagrant"><span class="toc-number">1.</span> <span class="toc-text">安装vagrant</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建工程目录"><span class="toc-number">1.1.</span> <span class="toc-text">创建工程目录</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#添加box"><span class="toc-number">1.1.1.</span> <span class="toc-text">添加box</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#此处添加了一个本地box"><span class="toc-number">1.1.2.</span> <span class="toc-text">此处添加了一个本地box</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化vagrant_模板文件"><span class="toc-number">1.2.</span> <span class="toc-text">初始化vagrant 模板文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置vagrant"><span class="toc-number">1.3.</span> <span class="toc-text">配置vagrant</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Every_Vagrant_virtual_environment_requires_a_box_to_build_off_of-"><span class="toc-number"></span> <span class="toc-text">Every Vagrant virtual environment requires a box to build off of.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Every_Vagrant_virtual_environment_requires_a_box_to_build_off_of--1"><span class="toc-number"></span> <span class="toc-text">Every Vagrant virtual environment requires a box to build off of.</span></a>
 		
 		</div>
 		
-		<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2>
-<h3 id="Create_a_new_post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+		<h3 id="安装vagrant">安装vagrant</h3>
+<p>vagrant 是基于virtualbox的，首先安装virtual vix<br>通过下面页面可以下载相关版本：<br>’‘’<br><a href="https://www.vagrantup.com/downloads" target="_blank" rel="external">https://www.vagrantup.com/downloads</a><br>‘’‘<br>mac环境下，下载<a href="https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.1.dmg进行安装" target="_blank" rel="external">https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.1.dmg进行安装</a></p>
+<h4 id="创建工程目录">创建工程目录</h4>
+<p><code><br>    mkdir flaskweb</code></p>
+<pre><code><span class="built_in">cd</span> flaskweb
+</code></pre><p></p>
+<h5 id="添加box">添加box</h5>
+<p>可以通过 <a href="https://vagrantcloud.com/discover/featured" target="_blank" rel="external">Vagrant Cloud website </a> 下载使用，默认下载到当前目录下。<br>‘’’<br>vagrant box add ubuntu/trusty64  ##默认添加到base</p>
+<h5 id="此处添加了一个本地box">此处添加了一个本地box</h5>
+<p>vagrant box add flaskweb centos65-x86_64-20140116.box<br>‘’’</p>
+<p>vagrant box command<br>‘’’<br>vagrant box<br>Usage: vagrant box <subcommand> [<args>]</args></subcommand></p>
+<p>Available subcommands:<br>     add<br>     list<br>     outdated<br>     remove<br>     repackage<br>     update</p>
+<p>vagrant box list<br>centos65 (virtualbox, 0)<br>flaskweb (virtualbox, 0)<br>‘’’</p>
+<h4 id="初始化vagrant_模板文件">初始化vagrant 模板文件</h4>
+<p>‘’’<br> vagrant init<br>‘’’</p>
+<h4 id="配置vagrant">配置vagrant</h4>
+<p>下载box后，我们需要告诉vagrant 当前项目中使用哪一个box,<br>‘’’<br>vi Vagrantfile</p>
+<h1 id="Every_Vagrant_virtual_environment_requires_a_box_to_build_off_of-">Every Vagrant virtual environment requires a box to build off of.</h1>
+<p>  config.vm.box = “base”</p>
+<h1 id="Every_Vagrant_virtual_environment_requires_a_box_to_build_off_of--1">Every Vagrant virtual environment requires a box to build off of.</h1>
+<p>  config.vm.box = “flaskweb”<br>‘’’</p>
+<p>虚拟机管理命令<br>‘’’<br>vagrant up #启动<br>vagrant reload #修改Vagrantfile快速使之快速生效<br>vagrant halt #关闭<br>vagrant suspend #暂停<br>vagrant resume #恢复<br>vagrant destroy #删除<br>‘’’</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/vagrant/">vagrant</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/python/">python</a><a href="/tags/vagrant/">vagrant</a>
+  </div>
 
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://blog.taurendruid.com/2014/09/10/hello-world/" data-title="HEXO 介绍 | TaurenDruid&#39;s Blog" data-tsina="undefined" class="share clearfix">
+  <div data-url="http://blog.taurendruid.com/2014/12/16/vagrant-install/" data-title="vagrant install | TaurenDruid&#39;s Blog" data-tsina="undefined" class="share clearfix">
   </div>
 
 </div>
@@ -126,14 +140,14 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2014/09/18/linux-fonts-install/" title="Linux下安装微软雅黑字体">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Linux下安装微软雅黑字体</span>
+
+<div class="next">
+<a href="/2014/10/30/Oracle-Create-DBLink/"  title="Oracle Create DBLink">
+ <strong>下一篇：</strong><br/> 
+ <span>Oracle Create DBLink
+</span>
 </a>
 </div>
-
 
 </nav>
 

@@ -4,7 +4,7 @@
   <subtitle><![CDATA[MySQL Linux Oracle Python ..]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.taurendruid.com/"/>
-  <updated>2014-10-30T09:54:49.399Z</updated>
+  <updated>2014-12-16T08:49:15.430Z</updated>
   <id>http://blog.taurendruid.com/</id>
   
   <author>
@@ -13,6 +13,48 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[vagrant install]]></title>
+    <link href="http://blog.taurendruid.com/2014/12/16/vagrant-install/"/>
+    <id>http://blog.taurendruid.com/2014/12/16/vagrant-install/</id>
+    <published>2014-12-16T08:08:58.000Z</published>
+    <updated>2014-12-16T08:48:51.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="安装vagrant">安装vagrant</h3>
+<p>vagrant 是基于virtualbox的，首先安装virtual vix<br>通过下面页面可以下载相关版本：<br>’‘’<br><a href="https://www.vagrantup.com/downloads" target="_blank" rel="external">https://www.vagrantup.com/downloads</a><br>‘’‘<br>mac环境下，下载<a href="https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.1.dmg进行安装" target="_blank" rel="external">https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.1.dmg进行安装</a></p>
+<h4 id="创建工程目录">创建工程目录</h4>
+<p><code><br>    mkdir flaskweb</code></p>
+<pre><code><span class="built_in">cd</span> flaskweb
+</code></pre><p></p>
+<h5 id="添加box">添加box</h5>
+<p>可以通过 <a href="https://vagrantcloud.com/discover/featured" target="_blank" rel="external">Vagrant Cloud website </a> 下载使用，默认下载到当前目录下。<br>‘’’<br>vagrant box add ubuntu/trusty64  ##默认添加到base</p>
+<h5 id="此处添加了一个本地box">此处添加了一个本地box</h5>
+<p>vagrant box add flaskweb centos65-x86_64-20140116.box<br>‘’’</p>
+<p>vagrant box command<br>‘’’<br>vagrant box<br>Usage: vagrant box <subcommand> [<args>]</args></subcommand></p>
+<p>Available subcommands:<br>     add<br>     list<br>     outdated<br>     remove<br>     repackage<br>     update</p>
+<p>vagrant box list<br>centos65 (virtualbox, 0)<br>flaskweb (virtualbox, 0)<br>‘’’</p>
+<h4 id="初始化vagrant_模板文件">初始化vagrant 模板文件</h4>
+<p>‘’’<br> vagrant init<br>‘’’</p>
+<h4 id="配置vagrant">配置vagrant</h4>
+<p>下载box后，我们需要告诉vagrant 当前项目中使用哪一个box,<br>‘’’<br>vi Vagrantfile</p>
+<h1 id="Every_Vagrant_virtual_environment_requires_a_box_to_build_off_of-">Every Vagrant virtual environment requires a box to build off of.</h1>
+<p>  config.vm.box = “base”</p>
+<h1 id="Every_Vagrant_virtual_environment_requires_a_box_to_build_off_of--1">Every Vagrant virtual environment requires a box to build off of.</h1>
+<p>  config.vm.box = “flaskweb”<br>‘’’</p>
+<p>虚拟机管理命令<br>‘’’<br>vagrant up #启动<br>vagrant reload #修改Vagrantfile快速使之快速生效<br>vagrant halt #关闭<br>vagrant suspend #暂停<br>vagrant resume #恢复<br>vagrant destroy #删除<br>‘’’</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[vagrant 安装配置]]>
+    
+    </summary>
+    
+      <category term="python" scheme="http://blog.taurendruid.com/tags/python/"/>
+    
+      <category term="vagrant" scheme="http://blog.taurendruid.com/tags/vagrant/"/>
+    
+      <category term="vagrant" scheme="http://blog.taurendruid.com/categories/vagrant/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Oracle Create DBLink]]></title>
