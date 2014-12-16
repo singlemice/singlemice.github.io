@@ -4,7 +4,7 @@
   <subtitle><![CDATA[MySQL Linux Oracle Python ..]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.taurendruid.com/"/>
-  <updated>2014-12-16T08:59:08.136Z</updated>
+  <updated>2014-12-16T09:00:33.190Z</updated>
   <id>http://blog.taurendruid.com/</id>
   
   <author>
@@ -19,13 +19,15 @@
     <link href="http://blog.taurendruid.com/2014/12/16/vagrant-install/"/>
     <id>http://blog.taurendruid.com/2014/12/16/vagrant-install/</id>
     <published>2014-12-16T08:08:58.000Z</published>
-    <updated>2014-12-16T08:58:56.000Z</updated>
+    <updated>2014-12-16T09:00:15.000Z</updated>
     <content type="html"><![CDATA[<h3 id="安装vagrant">安装vagrant</h3>
-<p>vagrant 是基于virtualbox的，首先安装virtual vix<br>通过下面页面可以下载相关版本：<br>’‘’<br><a href="https://www.vagrantup.com/downloads" target="_blank" rel="external">https://www.vagrantup.com/downloads</a><br>‘’‘<br>mac环境下，下载<a href="https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.1.dmg进行安装" target="_blank" rel="external">https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.1.dmg进行安装</a></p>
+<p>vagrant 是基于virtualbox的，首先安装virtual vix<br>通过下面页面可以下载相关版本：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http<span class="variable">s:</span>//www.vagrantup.<span class="keyword">com</span>/downloads</div></pre></td></tr></table></figure>
+
+<p>mac环境下，下载<a href="https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.1.dmg进行安装" target="_blank" rel="external">https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.1.dmg进行安装</a></p>
 <h4 id="创建工程目录">创建工程目录</h4>
-<p><code><br>    mkdir flaskweb</code></p>
-<pre><code><span class="built_in">cd</span> flaskweb
-</code></pre><p></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">mkdir</span> flaskweb</div><div class="line"></div><div class="line"><span class="keyword">cd</span> flaskweb</div></pre></td></tr></table></figure>
+
 <h5 id="添加box">添加box</h5>
 <p>可以通过 <a href="https://vagrantcloud.com/discover/featured" target="_blank" rel="external">Vagrant Cloud website </a> 下载使用，默认下载到当前目录下。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vagrant <span class="keyword">box</span> add ubuntu/trusty64  ##默认添加到base</div><div class="line"></div><div class="line">#####此处添加了一个本地<span class="keyword">box</span></div><div class="line">vagrant <span class="keyword">box</span> add flaskweb centos65-x86_64-<span class="number">20140116</span>.<span class="keyword">box</span></div></pre></td></tr></table></figure>
