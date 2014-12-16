@@ -91,28 +91,27 @@
 		
 		<h3 id="安装vagrant">安装vagrant</h3>
 <p>vagrant 是基于virtualbox的，首先安装virtual vix<br>通过下面页面可以下载相关版本：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http<span class="variable">s:</span>//www.vagrantup.<span class="keyword">com</span>/downloads</div></pre></td></tr></table></figure>
-
+<p><a href="https://www.vagrantup.com/downloads" target="_blank" rel="external">https://www.vagrantup.com/downloads</a></p>
 <p>mac环境下，下载<a href="https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.1.dmg进行安装" target="_blank" rel="external">https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.1.dmg进行安装</a></p>
 <h4 id="创建工程目录">创建工程目录</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">mkdir</span> flaskweb</div><div class="line"></div><div class="line"><span class="keyword">cd</span> flaskweb</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir flaskweb</div><div class="line"></div><div class="line"><span class="built_in">cd</span> flaskweb</div></pre></td></tr></table></figure>
 
 <h5 id="添加box">添加box</h5>
 <p>可以通过 <a href="https://vagrantcloud.com/discover/featured" target="_blank" rel="external">Vagrant Cloud website </a> 下载使用，默认下载到当前目录下。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vagrant <span class="keyword">box</span> add ubuntu/trusty64  ##默认添加到base</div><div class="line"></div><div class="line">#####此处添加了一个本地<span class="keyword">box</span></div><div class="line">vagrant <span class="keyword">box</span> add flaskweb centos65-x86_64-<span class="number">20140116</span>.<span class="keyword">box</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vagrant box add ubuntu/trusty64  <span class="comment">##默认添加到base</span></div><div class="line"></div><div class="line"><span class="comment">#####此处添加了一个本地box</span></div><div class="line">vagrant box add flaskweb centos65-x86_64-<span class="number">20140116</span>.box</div></pre></td></tr></table></figure>
 
 <p>vagrant box command</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="input"><span class="prompt">vagrant box</span></span></div><div class="line">Usage: vagrant box &lt;subcommand&gt; [&lt;args&gt;]</div><div class="line"></div><div class="line"><span class="constant">Available</span> <span class="symbol">subcommands:</span></div><div class="line">     add</div><div class="line">     list</div><div class="line">     outdated</div><div class="line">     remove</div><div class="line">     repackage</div><div class="line">     update</div><div class="line"></div><div class="line"></div><div class="line">vagrant box list</div><div class="line">centos65 (virtualbox, <span class="number">0</span>)</div><div class="line">flaskweb (virtualbox, <span class="number">0</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">vagrant box</div><div class="line">Usage: vagrant box &lt;subcommand&gt; [&lt;args&gt;]</div><div class="line"></div><div class="line">Available subcommands:</div><div class="line">     add</div><div class="line">     list</div><div class="line">     outdated</div><div class="line">     remove</div><div class="line">     repackage</div><div class="line">     update</div><div class="line"></div><div class="line"></div><div class="line">vagrant box list</div><div class="line">centos65 (virtualbox, <span class="number">0</span>)</div><div class="line">flaskweb (virtualbox, <span class="number">0</span>)</div></pre></td></tr></table></figure>
 
 <h4 id="初始化vagrant_模板文件">初始化vagrant 模板文件</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vagrant <span class="keyword">init</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vagrant init</div></pre></td></tr></table></figure>
 
 <h4 id="配置vagrant">配置vagrant</h4>
 <p>下载box后，我们需要告诉vagrant 当前项目中使用哪一个box,</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">vi Vagrantfile</div><div class="line"></div><div class="line"># Every Vagrant <span class="keyword">virtual</span> environment requires a <span class="keyword">box</span> to build off of.</div><div class="line">  config.vm.<span class="keyword">box</span> = <span class="string">"base"</span></div><div class="line"></div><div class="line"># Every Vagrant <span class="keyword">virtual</span> environment requires a <span class="keyword">box</span> to build off of.</div><div class="line">  config.vm.<span class="keyword">box</span> = <span class="string">"flaskweb"</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">vi Vagrantfile</div><div class="line"></div><div class="line"><span class="comment"># Every Vagrant virtual environment requires a box to build off of.</span></div><div class="line">  config.vm.box = <span class="string">"base"</span></div><div class="line"></div><div class="line"><span class="comment"># Every Vagrant virtual environment requires a box to build off of.</span></div><div class="line">  config.vm.box = <span class="string">"flaskweb"</span></div></pre></td></tr></table></figure>
 
 <p>虚拟机管理命令</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vagrant up <span class="preprocessor">#启动</span></div><div class="line">vagrant reload <span class="preprocessor">#修改Vagrantfile快速使之快速生效</span></div><div class="line">vagrant halt <span class="preprocessor">#关闭</span></div><div class="line">vagrant suspend <span class="preprocessor">#暂停</span></div><div class="line">vagrant <span class="keyword">resume</span> <span class="preprocessor">#恢复</span></div><div class="line">vagrant destroy <span class="preprocessor">#删除</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vagrant up <span class="comment">#启动</span></div><div class="line">vagrant reload <span class="comment">#修改Vagrantfile快速使之快速生效</span></div><div class="line">vagrant halt <span class="comment">#关闭</span></div><div class="line">vagrant suspend <span class="comment">#暂停</span></div><div class="line">vagrant resume <span class="comment">#恢复</span></div><div class="line">vagrant destroy <span class="comment">#删除</span></div></pre></td></tr></table></figure>
 
   
 	</div>
@@ -184,11 +183,7 @@
 		
 			<li><a href="/tags/dblink/" title="dblink">dblink<sup>1</sup></a></li>
 		
-			<li><a href="/tags/dblink-oracle/" title="dblink oracle">dblink oracle<sup>0</sup></a></li>
-		
 			<li><a href="/tags/fonts/" title="fonts">fonts<sup>1</sup></a></li>
-		
-			<li><a href="/tags/fonts-linux/" title="fonts linux">fonts linux<sup>0</sup></a></li>
 		
 			<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
 		
