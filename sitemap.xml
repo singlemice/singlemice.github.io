@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.taurendruid.com/2014/12/27/mydumper-Install-and-Usage/</loc>
+    <lastmod>2014-12-27T09:42:43.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.taurendruid.com/2014/12/27/mydumper-backup-and-restore/</loc>
     <lastmod>2014-12-27T09:40:50.000Z</lastmod>
   </url>
@@ -9,11 +14,6 @@
   <url>
     <loc>http://blog.taurendruid.com/2014/09/18/linux-fonts-install/</loc>
     <lastmod>2014-12-27T09:38:13.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.taurendruid.com/2014/12/27/mydumper-Install-and-Usage/</loc>
-    <lastmod>2014-12-27T04:15:26.000Z</lastmod>
   </url>
   
   <url>
