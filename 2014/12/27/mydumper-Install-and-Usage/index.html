@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Linux下安装微软雅黑字体 | TaurenDruid&#39;s Blog</title>
+    <title>mydumper Install and Usage | TaurenDruid&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="TaurenDruid">
     
-    <meta name="description" itemprop="description" content="Linux下安装微软雅黑字体">
+    <meta name="description" itemprop="description" content="install mydumper on centos 6">
     
     
     
@@ -70,12 +70,12 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/09/18/linux-fonts-install/" title="Linux下安装微软雅黑字体" itemprop="url">Linux下安装微软雅黑字体</a>
+      <a href="/2014/12/27/mydumper-Install-and-Usage/" title="mydumper Install and Usage" itemprop="url">mydumper Install and Usage</a>
   </h1>
   <p class="article-author">By
       <a href="http://blog.taurendruid.com/about" title="TaurenDruid" target="_blank">TaurenDruid</a>
   <p class="article-time">
-    <time datetime="2014-09-18T06:34:17.000Z" itemprop="datePublished">发表于9月 18 2014</time>
+    <time datetime="2014-12-27T03:04:13.000Z" itemprop="datePublished">发表于12月 27 2014</time>
     
   </p>
 </header>
@@ -85,29 +85,35 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Download</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">Troubleshoot</span></a></li></ol>
 		
 		</div>
 		
-		<p>   将win7中得到字体文件，并把字体文件放到到/usr/share/fonts/zh_CN文件夹中：</p>
-<p>　</p>
-<p>　　系统构建字体文件并刷新字体缓存</p>
-<p>　　</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">　　<span class="comment">#mkfontscale</span></div><div class="line"></div><div class="line">　　<span class="comment">#mkfontdir</span></div><div class="line"></div><div class="line">　　<span class="comment">#fc-cache -fv</span></div></pre></td></tr></table></figure>
+		<h3>Download</h3><br>Download the latest Mydumper verseion from <a href="https://launchpad.net/mydumper" target="_blank" rel="external">https://launchpad.net/mydumper</a><br>安装mydumper<br>Requirements<br><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">CMake</div><div class="line">Glib2</div><div class="line">PCRE</div><div class="line">MySQL</div><div class="line"></div><div class="line">yum <span class="operator"><span class="keyword">install</span> cmake glib2-devel zlib-devel pcre-deve</span></div></pre></td></tr></table></figure><br><br>if your server did not install mysql-dev ,you should install mysql-devel<br><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum <span class="operator"><span class="keyword">install</span> -y mysql_devel</span></div></pre></td></tr></table></figure><br><br>optional:<br><br><code>python-sphinx</code><br><br>CMake:<br><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cmake .</div><div class="line"><span class="keyword">make</span> </div><div class="line"><span class="keyword">make</span> install</div></pre></td></tr></table></figure><br><br><pre><br>[root@DB mydumper-0.6.2]# cmake .<br>— Using mysql-config: /usr/bin/mysql_config<br>— Found MySQL: /usr/include/mysql, /usr/lib64/mysql/libmysqlclient_r.so;/usr/lib64/libpthread.so;/usr/lib64/libm.so;/usr/lib64/librt.so;/usr/lib64/libdl.so<br>0<br>CMake Warning at docs/CMakeLists.txt:14 (message):<br>  Sphinx is older than v1.0, not building docs<br><br><br>— ————————————————————————<br>— MYSQL_CONFIG = /usr/bin/mysql_config<br>— CMAKE_INSTALL_PREFIX = /usr/local<br>— BUILD_DOCS = ON<br>— WITH_BINLOG = OFF<br>— RUN_CPPCHECK = OFF<br>— Change a values with: cmake -D<variable>=<value><br>— ————————————————————————<br>—<br>— Configuring done<br>— Generating done<br>— Build files have been written to: /data/mydumper-0.6.2<br><br></value></variable></pre><br><br>———————-<br>mydumper Usage:<br><br><pre><br>[root@DB mydumper-0.6.2]# mydumper —help<br>Usage:<br>  mydumper [OPTION…] multi-threaded MySQL dumping<br><br>Help Options:<br>  -?, —help                  Show help options<br><br>Application Options:<br>  -B, —database              Database to dump<br>  -T, —tables-list           Comma delimited table list to dump (does not exclude regex option)<br>  -o, —outputdir             Directory to output files to<br>  -s, —statement-size        Attempted size of INSERT statement in bytes, default 1000000<br>  -r, —rows                  Try to split tables into chunks of this many rows. This option turns off —chunk-filesize<br>  -F, —chunk-filesize        Split tables into chunks of this output file size. This value is in MB<br>  -c, —compress              Compress output files<br>  -e, —build-empty-files     Build dump files even if no data available from table<br>  -x, —regex                 Regular expression for ‘db.table’ matching<br>  -i, —ignore-engines        Comma delimited list of storage engines to ignore<br>  -m, —no-schemas            Do not dump table schemas with the data<br>  -k, —no-locks              Do not execute the temporary shared read lock.  WARNING: This will cause inconsistent backups<br>  —less-locking              Minimize locking time on InnoDB tables.<br>  -l, —long-query-guard      Set long query timer in seconds, default 60<br>  -K, —kill-long-queries     Kill long running queries (instead of aborting)<br>  -D, —daemon                Enable daemon mode<br>  -I, —snapshot-interval     Interval between each dump snapshot (in minutes), requires —daemon, default 60<br>  -L, —logfile               Log file name to use, by default stdout is used<br>  —tz-utc                    SET TIME_ZONE=’+00:00’ at top of dump to allow dumping of TIMESTAMP data when a server has data in different time zones or data is being moved between servers with different time zones, defaults to on use —skip-tz-utc to disable.<br>  —skip-tz-utc<br>  —use-savepoints            Use savepoints to reduce metadata locking issues, needs SUPER privilege<br>  —success-on-1146           Not increment error count and Warning instead of Critical in case of table doesn’t exist<br>  —lock-all-tables           Use LOCK TABLE for all, instead of FTWRL<br>  -h, —host                  The host to connect to<br>  -u, —user                  Username with privileges to run the dump<br>  -p, —password              User password<br>  -P, —port                  TCP/IP port to connect to<br>  -S, —socket                UNIX domain socket file to use for connection<br>  -t, —threads               Number of threads to use, default 4<br>  -C, —compress-protocol     Use compression on the MySQL connection<br>  -V, —version               Show the program version and exit<br>  -v, —verbose               Verbosity of output, 0 = silent, 1 = errors, 2 = warnings, 3 = info, default 2<br><br></pre><br><br><br><br>myloader Usage:<br><pre><br><br>[root@DB mydumper-0.6.2]# myloader —help<br>Usage:<br>  myloader [OPTION…] multi-threaded MySQL loader<br><br>Help Options:<br>  -?, —help                        Show help options<br><br>Application Options:<br>  -d, —directory                   Directory of the dump to import<br>  -q, —queries-per-transaction     Number of queries per transaction, default 1000<br>  -o, —overwrite-tables            Drop tables if they already exist<br>  -B, —database                    An alternative database to restore into<br>  -e, —enable-binlog               Enable binary logging of the restore data<br>  -h, —host                        The host to connect to<br>  -u, —user                        Username with privileges to run the dump<br>  -p, —password                    User password<br>  -P, —port                        TCP/IP port to connect to<br>  -S, —socket                      UNIX domain socket file to use for connection<br>  -t, —threads                     Number of threads to use, default 4<br>  -C, —compress-protocol           Use compression on the MySQL connection<br>  -V, —version                     Show the program version and exit<br>  -v, —verbose                     Verbosity of output, 0 = silent, 1 = errors, 2 = warnings, 3 = info, default 2<br><br></pre><br><h3>Troubleshoot</h3>
 
+<p>[root@DB mydumper-0.6.2]# cmake .</p>
+<p>— The CXX compiler identification is unknown</p>
+<p>   CMake Error: your CXX compiler: “CMAKE_CXX_COMPILER-NOTFOUND” was not found.</p>
+<p>   Please set CMAKE_CXX_COMPILER to a valid compiler path or name.</p>
+<p>— Using mysql-config: /usr/bin/mysql_config</p>
+<p>— Found MySQL: /usr/include/mysql, /usr/lib64/mysql/libmysqlclient_r.so;/usr/lib64/libpthread.so;/usr/lib64/libm.so;/usr/lib64/librt.so;/usr/lib64/libdl.so</p>
+<p>— checking for one of the modules ‘glib-2.0’</p>
+<p>— checking for one of the modules ‘gthread-2.0’</p>
+<p>— checking for module ‘libpcre’</p>
+<p>— found libpcre, version 7.8</p>
+<p>— Found PCRE: /usr/include</p>
+<p>[root@DB mydumper-0.6.2]#  whereis c++<br>c++:<br>if result is null then </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">yum</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">y</span> <span class="comment">gcc</span><span class="literal">-</span><span class="comment">c</span><span class="literal">+</span><span class="literal">+</span></div></pre></td></tr></table></figure>
+
+<p>[root@DB mydumper-0.6.2]#  whereis c++<br>c++: /usr/bin/c++ /usr/include/c++</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Linux/">Linux</a>
-</div>
-
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/fonts/">fonts</a><a href="/tags/linux/">linux</a>
+  <span></span> <a href="/tags/mysql/">mysql</a><a href="/tags/mydumper/">mydumper</a><a href="/tags/centos/">centos</a>
   </div>
 
 
@@ -115,7 +121,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://blog.taurendruid.com/2014/09/18/linux-fonts-install/" data-title="Linux下安装微软雅黑字体 | TaurenDruid&#39;s Blog" data-tsina="undefined" class="share clearfix">
+  <div data-url="http://blog.taurendruid.com/2014/12/27/mydumper-Install-and-Usage/" data-title="mydumper Install and Usage | TaurenDruid&#39;s Blog" data-tsina="undefined" class="share clearfix">
   </div>
 
 </div>
@@ -125,18 +131,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2014/10/30/Oracle-Create-DBLink/" title="Oracle Create DBLink">
+ <a href="/2014/12/27/mydumper-backup-and-restore/" title="">
   <strong>上一篇：</strong><br/>
   <span>
-  Oracle Create DBLink</span>
+  (no title)</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2014/09/10/hello-world/"  title="HEXO 介绍">
+<a href="/2014/12/16/vagrant-install/"  title="vagrant install">
  <strong>下一篇：</strong><br/> 
- <span>HEXO 介绍
+ <span>vagrant install
 </span>
 </a>
 </div>

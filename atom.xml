@@ -4,7 +4,7 @@
   <subtitle><![CDATA[MySQL Linux Oracle Python ..]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.taurendruid.com/"/>
-  <updated>2014-12-16T09:04:18.603Z</updated>
+  <updated>2014-12-27T09:34:28.350Z</updated>
   <id>http://blog.taurendruid.com/</id>
   
   <author>
@@ -13,6 +13,101 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[]]></title>
+    <link href="http://blog.taurendruid.com/2014/12/27/mydumper-backup-and-restore/"/>
+    <id>http://blog.taurendruid.com/2014/12/27/mydumper-backup-and-restore/</id>
+    <published>2014-12-27T09:34:01.000Z</published>
+    <updated>2014-12-27T09:34:00.000Z</updated>
+    <content type="html"><![CDATA[<p>title: “mydumper backup and restore”<br>date: 2014-12-27 12:26:37<br>tags: [mysql,mydumper,backup,restore]<br>categories:</p>
+<h2 id="description">description</h2>
+<p>mydumper是一个线程备份工具，相比其它逻辑备份工具有些复杂，需要协调所有的线程保持快照一致性。</p>
+<p>mydumper默认使用4个线程dump data和1个主线程</p>
+<ul>
+<li><p>Main Thread</p>
+<ul>
+<li>FLUSH TABLES WITH READ LOCK</li>
+</ul>
+</li>
+<li><p>Dump Thread X</p>
+<ul>
+<li>Start Transaction with nsistent snapshop;</li>
+<li>dump non-InnoDB tables</li>
+</ul>
+</li>
+<li><p>Main Thread</p>
+<ul>
+<li>UNLOCK TABLES</li>
+</ul>
+</li>
+<li><p>Dump Thread X</p>
+<ul>
+<li>dump InnoDB tables</li>
+</ul>
+</li>
+</ul>
+<p><h2>Backup</h2><br><code><br>mydumper -o /data/backup -r 100000 -c -e  -L mysql-backup.log -u USERNAME -p PASSWORD -h MySQL-Server -t 2 -v 3<br></code></p>
+<ul>
+<li>-o: Output directory (where the backup is saved)</li>
+<li>-r: Number of rows in a chunk</li>
+<li>-c: Compression!</li>
+<li><p>-e: Build dump files even if no data available from table</p>
+</li>
+<li><p>-L: Logfile to write to</p>
+</li>
+<li>-t: Number of parallel threads (I used 2 since the backup’ed host is on a server with high I/O and I didn’t want to cause too much delay in the slave replication because of high I/O wait</li>
+<li>-v: Level of verbosity</li>
+</ul>
+<p>在/data/backu目录下会有大量dump-files，至少有一个metadata文件，里面保存了binlog 信息</p>
+<p><h2>Import</h2><br><code><br>myloader —regex “^log.log_2014*” -d /data/backup -q 10000 -o -h MySQL-Target-Host -u USERNAME -p PASSWORD -v 3 -C -t 4<br></code></p>
+<p>选项同上</p>
+<h1 id="Notice">Notice</h1>
+<p><b><br>mydumper doesn’t dump database schemas. You’ll have to do this on your own and import them manually to the target hsot for your data-import BEFORE you’re using myloader.<br>I’ll update this article later and post a short script for ex- and import of all database schemas on a server.<br></b></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>title: “mydumper backup and restore”<br>date: 2014-12-27 12:26:37<br>tags: [mysql,mydumper,backup,restore]<br>categories:</p>
+<h2 id="des]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[mydumper Install and Usage]]></title>
+    <link href="http://blog.taurendruid.com/2014/12/27/mydumper-Install-and-Usage/"/>
+    <id>http://blog.taurendruid.com/2014/12/27/mydumper-Install-and-Usage/</id>
+    <published>2014-12-27T03:04:13.000Z</published>
+    <updated>2014-12-27T04:15:26.000Z</updated>
+    <content type="html"><![CDATA[<h3>Download</h3><br>Download the latest Mydumper verseion from <a href="https://launchpad.net/mydumper" target="_blank" rel="external">https://launchpad.net/mydumper</a><br>安装mydumper<br>Requirements<br><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">CMake</div><div class="line">Glib2</div><div class="line">PCRE</div><div class="line">MySQL</div><div class="line"></div><div class="line">yum <span class="operator"><span class="keyword">install</span> cmake glib2-devel zlib-devel pcre-deve</span></div></pre></td></tr></table></figure><br><br>if your server did not install mysql-dev ,you should install mysql-devel<br><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum <span class="operator"><span class="keyword">install</span> -y mysql_devel</span></div></pre></td></tr></table></figure><br><br>optional:<br><br><code>python-sphinx</code><br><br>CMake:<br><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cmake .</div><div class="line"><span class="keyword">make</span> </div><div class="line"><span class="keyword">make</span> install</div></pre></td></tr></table></figure><br><br><pre><br>[root@DB mydumper-0.6.2]# cmake .<br>— Using mysql-config: /usr/bin/mysql_config<br>— Found MySQL: /usr/include/mysql, /usr/lib64/mysql/libmysqlclient_r.so;/usr/lib64/libpthread.so;/usr/lib64/libm.so;/usr/lib64/librt.so;/usr/lib64/libdl.so<br>0<br>CMake Warning at docs/CMakeLists.txt:14 (message):<br>  Sphinx is older than v1.0, not building docs<br><br><br>— ————————————————————————<br>— MYSQL_CONFIG = /usr/bin/mysql_config<br>— CMAKE_INSTALL_PREFIX = /usr/local<br>— BUILD_DOCS = ON<br>— WITH_BINLOG = OFF<br>— RUN_CPPCHECK = OFF<br>— Change a values with: cmake -D<variable>=<value><br>— ————————————————————————<br>—<br>— Configuring done<br>— Generating done<br>— Build files have been written to: /data/mydumper-0.6.2<br><br></value></variable></pre><br><br>———————-<br>mydumper Usage:<br><br><pre><br>[root@DB mydumper-0.6.2]# mydumper —help<br>Usage:<br>  mydumper [OPTION…] multi-threaded MySQL dumping<br><br>Help Options:<br>  -?, —help                  Show help options<br><br>Application Options:<br>  -B, —database              Database to dump<br>  -T, —tables-list           Comma delimited table list to dump (does not exclude regex option)<br>  -o, —outputdir             Directory to output files to<br>  -s, —statement-size        Attempted size of INSERT statement in bytes, default 1000000<br>  -r, —rows                  Try to split tables into chunks of this many rows. This option turns off —chunk-filesize<br>  -F, —chunk-filesize        Split tables into chunks of this output file size. This value is in MB<br>  -c, —compress              Compress output files<br>  -e, —build-empty-files     Build dump files even if no data available from table<br>  -x, —regex                 Regular expression for ‘db.table’ matching<br>  -i, —ignore-engines        Comma delimited list of storage engines to ignore<br>  -m, —no-schemas            Do not dump table schemas with the data<br>  -k, —no-locks              Do not execute the temporary shared read lock.  WARNING: This will cause inconsistent backups<br>  —less-locking              Minimize locking time on InnoDB tables.<br>  -l, —long-query-guard      Set long query timer in seconds, default 60<br>  -K, —kill-long-queries     Kill long running queries (instead of aborting)<br>  -D, —daemon                Enable daemon mode<br>  -I, —snapshot-interval     Interval between each dump snapshot (in minutes), requires —daemon, default 60<br>  -L, —logfile               Log file name to use, by default stdout is used<br>  —tz-utc                    SET TIME_ZONE=’+00:00’ at top of dump to allow dumping of TIMESTAMP data when a server has data in different time zones or data is being moved between servers with different time zones, defaults to on use —skip-tz-utc to disable.<br>  —skip-tz-utc<br>  —use-savepoints            Use savepoints to reduce metadata locking issues, needs SUPER privilege<br>  —success-on-1146           Not increment error count and Warning instead of Critical in case of table doesn’t exist<br>  —lock-all-tables           Use LOCK TABLE for all, instead of FTWRL<br>  -h, —host                  The host to connect to<br>  -u, —user                  Username with privileges to run the dump<br>  -p, —password              User password<br>  -P, —port                  TCP/IP port to connect to<br>  -S, —socket                UNIX domain socket file to use for connection<br>  -t, —threads               Number of threads to use, default 4<br>  -C, —compress-protocol     Use compression on the MySQL connection<br>  -V, —version               Show the program version and exit<br>  -v, —verbose               Verbosity of output, 0 = silent, 1 = errors, 2 = warnings, 3 = info, default 2<br><br></pre><br><br><br><br>myloader Usage:<br><pre><br><br>[root@DB mydumper-0.6.2]# myloader —help<br>Usage:<br>  myloader [OPTION…] multi-threaded MySQL loader<br><br>Help Options:<br>  -?, —help                        Show help options<br><br>Application Options:<br>  -d, —directory                   Directory of the dump to import<br>  -q, —queries-per-transaction     Number of queries per transaction, default 1000<br>  -o, —overwrite-tables            Drop tables if they already exist<br>  -B, —database                    An alternative database to restore into<br>  -e, —enable-binlog               Enable binary logging of the restore data<br>  -h, —host                        The host to connect to<br>  -u, —user                        Username with privileges to run the dump<br>  -p, —password                    User password<br>  -P, —port                        TCP/IP port to connect to<br>  -S, —socket                      UNIX domain socket file to use for connection<br>  -t, —threads                     Number of threads to use, default 4<br>  -C, —compress-protocol           Use compression on the MySQL connection<br>  -V, —version                     Show the program version and exit<br>  -v, —verbose                     Verbosity of output, 0 = silent, 1 = errors, 2 = warnings, 3 = info, default 2<br><br></pre><br><h3>Troubleshoot</h3>
+
+<p>[root@DB mydumper-0.6.2]# cmake .</p>
+<p>— The CXX compiler identification is unknown</p>
+<p>   CMake Error: your CXX compiler: “CMAKE_CXX_COMPILER-NOTFOUND” was not found.</p>
+<p>   Please set CMAKE_CXX_COMPILER to a valid compiler path or name.</p>
+<p>— Using mysql-config: /usr/bin/mysql_config</p>
+<p>— Found MySQL: /usr/include/mysql, /usr/lib64/mysql/libmysqlclient_r.so;/usr/lib64/libpthread.so;/usr/lib64/libm.so;/usr/lib64/librt.so;/usr/lib64/libdl.so</p>
+<p>— checking for one of the modules ‘glib-2.0’</p>
+<p>— checking for one of the modules ‘gthread-2.0’</p>
+<p>— checking for module ‘libpcre’</p>
+<p>— found libpcre, version 7.8</p>
+<p>— Found PCRE: /usr/include</p>
+<p>[root@DB mydumper-0.6.2]#  whereis c++<br>c++:<br>if result is null then </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">yum</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">y</span> <span class="comment">gcc</span><span class="literal">-</span><span class="comment">c</span><span class="literal">+</span><span class="literal">+</span></div></pre></td></tr></table></figure>
+
+<p>[root@DB mydumper-0.6.2]#  whereis c++<br>c++: /usr/bin/c++ /usr/include/c++</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[install mydumper on centos 6]]>
+    
+    </summary>
+    
+      <category term="mysql" scheme="http://blog.taurendruid.com/tags/mysql/"/>
+    
+      <category term="mydumper" scheme="http://blog.taurendruid.com/tags/mydumper/"/>
+    
+      <category term="centos" scheme="http://blog.taurendruid.com/tags/centos/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[vagrant install]]></title>

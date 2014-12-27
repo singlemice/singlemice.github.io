@@ -4,12 +4,14 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Linux下安装微软雅黑字体 | TaurenDruid&#39;s Blog</title>
+    <title>TaurenDruid&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="TaurenDruid">
     
-    <meta name="description" itemprop="description" content="Linux下安装微软雅黑字体">
+    <meta name="description" content="title: “mydumper backup and restore”date: 2014-12-27 12:26:37tags: [mysql,mydumper,backup,restore]categories:
+description
+mydumper是一个线程备份工具，相比其它逻辑备份工具">
     
     
     
@@ -70,12 +72,12 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/09/18/linux-fonts-install/" title="Linux下安装微软雅黑字体" itemprop="url">Linux下安装微软雅黑字体</a>
+      <a href="/2014/12/27/mydumper-backup-and-restore/" title="" itemprop="url"></a>
   </h1>
   <p class="article-author">By
       <a href="http://blog.taurendruid.com/about" title="TaurenDruid" target="_blank">TaurenDruid</a>
   <p class="article-time">
-    <time datetime="2014-09-18T06:34:17.000Z" itemprop="datePublished">发表于9月 18 2014</time>
+    <time datetime="2014-12-27T09:34:01.000Z" itemprop="datePublished">发表于12月 27 2014</time>
     
   </p>
 </header>
@@ -85,37 +87,65 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#description"><span class="toc-number">1.</span> <span class="toc-text">description</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">Backup</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">Import</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Notice"><span class="toc-number"></span> <span class="toc-text">Notice</span></a>
 		
 		</div>
 		
-		<p>   将win7中得到字体文件，并把字体文件放到到/usr/share/fonts/zh_CN文件夹中：</p>
-<p>　</p>
-<p>　　系统构建字体文件并刷新字体缓存</p>
-<p>　　</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">　　<span class="comment">#mkfontscale</span></div><div class="line"></div><div class="line">　　<span class="comment">#mkfontdir</span></div><div class="line"></div><div class="line">　　<span class="comment">#fc-cache -fv</span></div></pre></td></tr></table></figure>
-
+		<p>title: “mydumper backup and restore”<br>date: 2014-12-27 12:26:37<br>tags: [mysql,mydumper,backup,restore]<br>categories:</p>
+<h2 id="description">description</h2>
+<p>mydumper是一个线程备份工具，相比其它逻辑备份工具有些复杂，需要协调所有的线程保持快照一致性。</p>
+<p>mydumper默认使用4个线程dump data和1个主线程</p>
+<ul>
+<li><p>Main Thread</p>
+<ul>
+<li>FLUSH TABLES WITH READ LOCK</li>
+</ul>
+</li>
+<li><p>Dump Thread X</p>
+<ul>
+<li>Start Transaction with nsistent snapshop;</li>
+<li>dump non-InnoDB tables</li>
+</ul>
+</li>
+<li><p>Main Thread</p>
+<ul>
+<li>UNLOCK TABLES</li>
+</ul>
+</li>
+<li><p>Dump Thread X</p>
+<ul>
+<li>dump InnoDB tables</li>
+</ul>
+</li>
+</ul>
+<p><h2>Backup</h2><br><code><br>mydumper -o /data/backup -r 100000 -c -e  -L mysql-backup.log -u USERNAME -p PASSWORD -h MySQL-Server -t 2 -v 3<br></code></p>
+<ul>
+<li>-o: Output directory (where the backup is saved)</li>
+<li>-r: Number of rows in a chunk</li>
+<li>-c: Compression!</li>
+<li><p>-e: Build dump files even if no data available from table</p>
+</li>
+<li><p>-L: Logfile to write to</p>
+</li>
+<li>-t: Number of parallel threads (I used 2 since the backup’ed host is on a server with high I/O and I didn’t want to cause too much delay in the slave replication because of high I/O wait</li>
+<li>-v: Level of verbosity</li>
+</ul>
+<p>在/data/backu目录下会有大量dump-files，至少有一个metadata文件，里面保存了binlog 信息</p>
+<p><h2>Import</h2><br><code><br>myloader —regex “^log.log_2014*” -d /data/backup -q 10000 -o -h MySQL-Target-Host -u USERNAME -p PASSWORD -v 3 -C -t 4<br></code></p>
+<p>选项同上</p>
+<h1 id="Notice">Notice</h1>
+<p><b><br>mydumper doesn’t dump database schemas. You’ll have to do this on your own and import them manually to the target hsot for your data-import BEFORE you’re using myloader.<br>I’ll update this article later and post a short script for ex- and import of all database schemas on a server.<br></b></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Linux/">Linux</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/fonts/">fonts</a><a href="/tags/linux/">linux</a>
-  </div>
 
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://blog.taurendruid.com/2014/09/18/linux-fonts-install/" data-title="Linux下安装微软雅黑字体 | TaurenDruid&#39;s Blog" data-tsina="undefined" class="share clearfix">
+  <div data-url="http://blog.taurendruid.com/2014/12/27/mydumper-backup-and-restore/" data-title="TaurenDruid&#39;s Blog" data-tsina="undefined" class="share clearfix">
   </div>
 
 </div>
@@ -124,19 +154,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2014/10/30/Oracle-Create-DBLink/" title="Oracle Create DBLink">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Oracle Create DBLink</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2014/09/10/hello-world/"  title="HEXO 介绍">
+<a href="/2014/12/27/mydumper-Install-and-Usage/"  title="mydumper Install and Usage">
  <strong>下一篇：</strong><br/> 
- <span>HEXO 介绍
+ <span>mydumper Install and Usage
 </span>
 </a>
 </div>

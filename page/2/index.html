@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Linux下安装微软雅黑字体 | TaurenDruid&#39;s Blog</title>
+    <title>TaurenDruid&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="TaurenDruid">
     
-    <meta name="description" itemprop="description" content="Linux下安装微软雅黑字体">
+    <meta name="description" content="Keep it simple, stupid">
     
     
     
@@ -65,86 +65,28 @@
 </div>
     </header>
     <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2014/09/18/linux-fonts-install/" title="Linux下安装微软雅黑字体" itemprop="url">Linux下安装微软雅黑字体</a>
-  </h1>
-  <p class="article-author">By
-      <a href="http://blog.taurendruid.com/about" title="TaurenDruid" target="_blank">TaurenDruid</a>
-  <p class="article-time">
-    <time datetime="2014-09-18T06:34:17.000Z" itemprop="datePublished">发表于9月 18 2014</time>
-    
-  </p>
-</header>
-	<div class="article-content">
-		
-		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
-		
-			
-		
-		</div>
-		
-		<p>   将win7中得到字体文件，并把字体文件放到到/usr/share/fonts/zh_CN文件夹中：</p>
-<p>　</p>
-<p>　　系统构建字体文件并刷新字体缓存</p>
-<p>　　</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">　　<span class="comment">#mkfontscale</span></div><div class="line"></div><div class="line">　　<span class="comment">#mkfontdir</span></div><div class="line"></div><div class="line">　　<span class="comment">#fc-cache -fv</span></div></pre></td></tr></table></figure>
+      <div id="main">
 
+  <section class="post" itemscope itemprop="blogPost">
   
-	</div>
-		<footer class="article-footer clearfix">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Linux/">Linux</a>
-</div>
-
-
-  <div class="article-tags">
+    <a href="/2014/09/10/hello-world/" title="HEXO 介绍" itemprop="url">
   
-  <span></span> <a href="/tags/fonts/">fonts</a><a href="/tags/linux/">linux</a>
-  </div>
+    <h1 itemprop="name">HEXO 介绍</h1>
+    
+     
+           <p itemprop="description" >Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the </p>
+        
+    
+    <time datetime="2014-09-10T06:34:17.000Z" itemprop="datePublished">9月 10 2014</time>
+  </a>
+</section>
 
 
-
-
-<div class="article-share" id="share">
-
-  <div data-url="http://blog.taurendruid.com/2014/09/18/linux-fonts-install/" data-title="Linux下安装微软雅黑字体 | TaurenDruid&#39;s Blog" data-tsina="undefined" class="share clearfix">
-  </div>
+  <nav id="page-nav" class="clearfix">
+    <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 </div>
-</footer>   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2014/10/30/Oracle-Create-DBLink/" title="Oracle Create DBLink">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Oracle Create DBLink</span>
-</a>
-</div>
-
-
-<div class="next">
-<a href="/2014/09/10/hello-world/"  title="HEXO 介绍">
- <strong>下一篇：</strong><br/> 
- <span>HEXO 介绍
-</span>
-</a>
-</div>
-
-</nav>
-
-	
-</div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
 <div id="asidepart">
@@ -311,98 +253,11 @@ $(document).ready(function(){
 });
 </script>
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      h  = $('article h2')
-      ah = $('article h2'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  if(ah.length==0){
-    t.css('display','none');
-  }else{
-    c.click(function(){
-      ta.css('display', 'block').addClass('fadeIn');
-    });
-    o.click(function(){
-      ta.css('display', 'none');
-    });
-    $(window).scroll(function(){
-      ta.css("top",Math.max(140,320-$(this).scrollTop()));
-    });
-  };
-});
-</script>
-
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina');
-  var html = [
-  '<a href="#" class="overlay" id="qrcode"></a>',
-  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
-  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-  $('.article-share-qrcode').click(function(){
-    var imgSrc = $('#qrcode-pic').attr('data-src');
-    $('#qrcode-pic').attr('src', imgSrc);
-    $('#qrcode-pic').load(function(){
-        $('.qrcode strong').text(' ');
-    });
-  });
-});     
-</script>
 
 
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.article-content').each(function(i){
-    $(this).find('img').each(function(){
-      if ($(this).parent().hasClass('fancybox')) return;
-      var alt = this.alt;
-      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
-    });
-    $(this).find('.fancybox').each(function(){
-      $(this).attr('rel', 'article' + i);
-    });
-  });
-  if($.fancybox){
-    $('.fancybox').fancybox();
-  }
-}); 
-</script>
 
-
-
-<div id="totop">
-<a title="返回顶部"><img src="/img/scrollup.png"/></a>
-</div>
-
-<script src="/js/totop.js"></script>
 
 <script type="text/x-mathjax-config"> 
 MathJax.Hub.Config({ 
@@ -413,4 +268,4 @@ MathJax.Hub.Config({
    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
   </body>
-</html>
+ </html>
