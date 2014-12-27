@@ -4,7 +4,7 @@
   <subtitle><![CDATA[MySQL Linux Oracle Python ..]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.taurendruid.com/"/>
-  <updated>2014-12-27T09:34:28.350Z</updated>
+  <updated>2014-12-27T09:38:16.963Z</updated>
   <id>http://blog.taurendruid.com/</id>
   
   <author>
@@ -18,9 +18,12 @@
     <title><![CDATA[]]></title>
     <link href="http://blog.taurendruid.com/2014/12/27/mydumper-backup-and-restore/"/>
     <id>http://blog.taurendruid.com/2014/12/27/mydumper-backup-and-restore/</id>
-    <published>2014-12-27T09:34:01.000Z</published>
-    <updated>2014-12-27T09:34:00.000Z</updated>
-    <content type="html"><![CDATA[<p>title: “mydumper backup and restore”<br>date: 2014-12-27 12:26:37<br>tags: [mysql,mydumper,backup,restore]<br>categories:</p>
+    <published>2014-12-27T09:38:11.000Z</published>
+    <updated>2014-12-27T09:38:11.000Z</updated>
+    <content type="html"><![CDATA[<p>title: “mydumper backup and restore”</p>
+<p>date: 2014-12-27 12:26:37</p>
+<p>tags: [mysql,mydumper,backup,restore]</p>
+<p>categories: mysql</p>
 <h2 id="description">description</h2>
 <p>mydumper是一个线程备份工具，相比其它逻辑备份工具有些复杂，需要协调所有的线程保持快照一致性。</p>
 <p>mydumper默认使用4个线程dump data和1个主线程</p>
@@ -66,8 +69,10 @@
 <p><b><br>mydumper doesn’t dump database schemas. You’ll have to do this on your own and import them manually to the target hsot for your data-import BEFORE you’re using myloader.<br>I’ll update this article later and post a short script for ex- and import of all database schemas on a server.<br></b></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>title: “mydumper backup and restore”<br>date: 2014-12-27 12:26:37<br>tags: [mysql,mydumper,backup,restore]<br>categories:</p>
-<h2 id="des]]>
+    <![CDATA[<p>title: “mydumper backup and restore”</p>
+<p>date: 2014-12-27 12:26:37</p>
+<p>tags: [mysql,mydumper,backup,restore]</p>
+<p>categories: mys]]>
     </summary>
     
   </entry>
@@ -196,7 +201,7 @@
     <link href="http://blog.taurendruid.com/2014/09/18/linux-fonts-install/"/>
     <id>http://blog.taurendruid.com/2014/09/18/linux-fonts-install/</id>
     <published>2014-09-18T06:34:17.000Z</published>
-    <updated>2014-10-30T08:17:09.000Z</updated>
+    <updated>2014-12-27T09:38:13.000Z</updated>
     <content type="html"><![CDATA[<p>   将win7中得到字体文件，并把字体文件放到到/usr/share/fonts/zh_CN文件夹中：</p>
 <p>　</p>
 <p>　　系统构建字体文件并刷新字体缓存</p>
