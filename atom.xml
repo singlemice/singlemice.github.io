@@ -4,7 +4,7 @@
   <subtitle><![CDATA[MySQL Linux Oracle Python ..]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.taurendruid.com/"/>
-  <updated>2014-12-28T08:29:35.501Z</updated>
+  <updated>2014-12-28T14:31:14.048Z</updated>
   <id>http://blog.taurendruid.com/</id>
   
   <author>
@@ -13,6 +13,47 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[mongodb Many-to-Many Relations]]></title>
+    <link href="http://blog.taurendruid.com/2014/12/28/mongodb-Many-to-Many-Relations/"/>
+    <id>http://blog.taurendruid.com/2014/12/28/mongodb-Many-to-Many-Relations/</id>
+    <published>2014-12-28T13:52:03.000Z</published>
+    <updated>2014-12-28T14:31:01.000Z</updated>
+    <content type="html"><![CDATA[<p>本文是对mongodb应用设计模式的一节笔记;</p>
+<p>使用mongodb的document references的典型案例是many-to-many 或者 M:N的关系。每个产品可能在多个类别里，并且每个分类有多个产品。我们可以模拟一个多对多的schema并且使用一个”join collection”:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// db.product schema</div><div class="line">{ <span class="string">"_id"</span>: <span class="string">"My Product"</span>, <span class="keyword">...</span> } </div><div class="line"></div><div class="line">// db.category schema</div><div class="line">{ <span class="string">"_id"</span>: <span class="string">"My Category"</span>, <span class="keyword">...</span> }</div><div class="line"></div><div class="line">// db.product_category schema</div><div class="line">{ <span class="string">"_id"</span>: ObjectId(<span class="keyword">...</span>),</div><div class="line">  <span class="string">"product_id"</span>: <span class="string">"My Product"</span>,</div><div class="line">  <span class="string">"category_id"</span>: <span class="string">"My Category"</span> }</div></pre></td></tr></table></figure>
+
+<p>虽然这个方法给了我们一个恰到好处的规范化的model,最终我们的查询要做大量应用级别的“join”</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_product_with_categories</span><span class="params">(product_id)</span>:</span></div><div class="line">	product = db.product.find_one({<span class="string">"_id"</span>: product_id}) </div><div class="line"></div><div class="line">	category_ids = [</div><div class="line">		p_c[<span class="string">'category_id'</span>]</div><div class="line">		f	<span class="keyword">or</span> p_c <span class="keyword">in</span> db.product_category.find(</div><div class="line">                { <span class="string">"product_id"</span>: product_id }) ]</div><div class="line">    categories = db.category.find({</div><div class="line">		<span class="string">"_id"</span>: { <span class="string">"$in"</span>: category_ids } }) </div><div class="line"></div><div class="line">		<span class="keyword">return</span> product, categories</div></pre></td></tr></table></figure>
+
+<p>获取一个分类以及它的产品同样很复杂。或者我们可以把对象完整的嵌入到另一个里面：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// db.product schema</div><div class="line">    { <span class="string">"_id"</span>: <span class="string">"My Product"</span>,</div><div class="line">      <span class="string">"categories"</span>: [</div><div class="line">          { <span class="string">"_id"</span>: <span class="string">"My Category"</span>, <span class="keyword">...</span> }</div><div class="line">          <span class="keyword">...</span>] }</div><div class="line">    // db.category schema</div><div class="line">    { <span class="string">"_id"</span>: <span class="string">"My Category"</span>,</div><div class="line">      <span class="string">"products"</span>: [</div><div class="line">        { <span class="string">"_id"</span>: <span class="string">"My Product"</span>, <span class="keyword">...</span> }</div><div class="line">        <span class="keyword">...</span>] }</div></pre></td></tr></table></figure>
+
+<p>查询现在更加简单：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_product_with_categories</span><span class="params">(product_id)</span>:</span></div><div class="line">	<span class="keyword">return</span> db.product.find_one({<span class="string">"_id"</span>: product_id})</div></pre></td></tr></table></figure>
+
+<p>当然如果你想更新一个产品或分类，我们必须更新它和它所在的collections和它所嵌入的其它文档。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_product</span><span class="params">(product)</span>:</span> </div><div class="line">	db.product.save(product) </div><div class="line">	db.category.update(</div><div class="line">    	{ <span class="string">'products._id'</span>: product[<span class="string">'_id'</span>] },</div><div class="line">        { <span class="string">'$set'</span>: { <span class="string">'products.*'</span>: product } },</div><div class="line">        multi=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+
+<p>对于many-to-many join,一个妥协的方法常常是取好的，把_id值嵌入而不是嵌入整个文档。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// db.product schema</div><div class="line">   { <span class="string">"_id"</span>: <span class="string">"My Product"</span>,</div><div class="line">     <span class="string">"category_ids"</span>: [ <span class="string">"My Category"</span>, <span class="keyword">...</span> ] }</div><div class="line">// db.category schema</div><div class="line">{ <span class="string">"_id"</span>: <span class="string">"My Category"</span> }</div></pre></td></tr></table></figure>
+
+<p>现在我们的查询有一点复杂，但是现在不需要担心更新包含在每个分类里的产品了。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_product_with_categories</span><span class="params">(product_id)</span>:</span></div><div class="line">	product = db.product.find_one({<span class="string">"_id"</span>: product_id}) </div><div class="line"></div><div class="line">	categories = list(db.category.find({</div><div class="line"></div><div class="line">		<span class="string">'_id'</span>: {<span class="string">'$in'</span>: product[<span class="string">'category_ids'</span>]} })) 	</div><div class="line"></div><div class="line">	<span class="keyword">return</span> product, categories</div></pre></td></tr></table></figure>
+
+<p>MongoDB中Schema设计相比科学更趋向于一件艺术品，早期你需要做决的定是嵌入一个一对多的关系作为一个子文档数组还是按照关系的方法并且通过id的值作为reference documents </p>
+]]></content>
+    <summary type="html">
+    <![CDATA[mongodb多对多关系设计]]>
+    
+    </summary>
+    
+      <category term="mongodb" scheme="http://blog.taurendruid.com/tags/mongodb/"/>
+    
+      <category term="mongodb" scheme="http://blog.taurendruid.com/categories/mongodb/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[mydumper backup and restore]]></title>
