@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.taurendruid.com/2015/01/02/cold-backup-01/</loc>
+    <lastmod>2015-01-02T07:36:26.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.taurendruid.com/2014/12/28/mongodb-Many-to-Many-Relations/</loc>
     <lastmod>2014-12-28T14:37:22.000Z</lastmod>
   </url>
