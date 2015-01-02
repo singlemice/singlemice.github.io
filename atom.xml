@@ -4,7 +4,7 @@
   <subtitle><![CDATA[MySQL Linux Oracle Python ..]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.taurendruid.com/"/>
-  <updated>2015-01-02T08:18:01.151Z</updated>
+  <updated>2015-01-02T08:26:49.342Z</updated>
   <id>http://blog.taurendruid.com/</id>
   
   <author>
@@ -19,14 +19,17 @@
     <link href="http://blog.taurendruid.com/2015/01/02/cold-backup-01/"/>
     <id>http://blog.taurendruid.com/2015/01/02/cold-backup-01/</id>
     <published>2015-01-02T07:27:43.000Z</published>
-    <updated>2015-01-02T08:17:59.000Z</updated>
+    <updated>2015-01-02T08:26:17.000Z</updated>
     <content type="html"><![CDATA[<h3>准备环境</h3>
 
 <p>创建表空间</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">tablespace</span> eagle</span></div><div class="line">datafile <span class="string">'/u01/app/oracle/oradata/orcl/eagle01.dbf'</span> <span class="keyword">size</span> <span class="number">200</span>M</div><div class="line">autoextend <span class="keyword">on</span> <span class="keyword">next</span> <span class="number">10</span>m maxsize <span class="number">500</span>m;</div></pre></td></tr></table></figure>
 
 <p>创建用户</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">user</span> eagle <span class="keyword">identified</span> <span class="keyword">by</span> oracle </span></div><div class="line"><span class="keyword">default</span> <span class="keyword">tablespace</span> eagle</div><div class="line"><span class="keyword">temporary</span> <span class="keyword">tablespace</span> temp;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="operator"><span class="keyword">grant</span> <span class="keyword">connect</span> , resource, unlimited <span class="keyword">tablespace</span> <span class="keyword">to</span> eagle;</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">user</span> eagle <span class="keyword">identified</span> <span class="keyword">by</span> oracle </span></div><div class="line"><span class="keyword">default</span> <span class="keyword">tablespace</span> eagle</div><div class="line"><span class="keyword">temporary</span> <span class="keyword">tablespace</span> temp;</div><div class="line"><span class="operator"><span class="keyword">grant</span> <span class="keyword">connect</span> , resource, unlimited <span class="keyword">tablespace</span> <span class="keyword">to</span> eagle;</span></div></pre></td></tr></table></figure>
+
+<p>创建测试表对象以及测试数据</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> table eagle.test_data <span class="keyword">as</span> <span class="keyword">select</span> * <span class="keyword">from</span> all_objects;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">select</span> count<span class="comment">(*) from eagle.test_data;</span></div><div class="line"></div><div class="line">  COUNT(*)</div><div class="line">----------</div><div class="line">     <span class="number">50272</span></div></pre></td></tr></table></figure>
 
 ]]></content>
     <summary type="html">
