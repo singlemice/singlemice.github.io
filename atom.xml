@@ -4,7 +4,7 @@
   <subtitle><![CDATA[MySQL Linux Oracle Python ..]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.taurendruid.com/"/>
-  <updated>2015-01-02T08:13:43.273Z</updated>
+  <updated>2015-01-02T08:14:43.083Z</updated>
   <id>http://blog.taurendruid.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://blog.taurendruid.com/2015/01/02/cold-backup-01/"/>
     <id>http://blog.taurendruid.com/2015/01/02/cold-backup-01/</id>
     <published>2015-01-02T07:27:43.000Z</published>
-    <updated>2015-01-02T08:13:30.000Z</updated>
+    <updated>2015-01-02T08:14:40.000Z</updated>
     <content type="html"><![CDATA[<h3>准备环境</h3>
 
 <p>创建表空间</p>
@@ -41,8 +41,6 @@
       <category term="backup" scheme="http://blog.taurendruid.com/tags/backup/"/>
     
       <category term="Oracle" scheme="http://blog.taurendruid.com/categories/Oracle/"/>
-    
-      <category term="rman" scheme="http://blog.taurendruid.com/categories/Oracle/rman/"/>
     
   </entry>
   
