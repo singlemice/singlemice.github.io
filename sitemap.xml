@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.taurendruid.com/2015/08/10/rman-restore-from-RAC-ASM-TO-Single-Instance/</loc>
+    <lastmod>2015-08-10T11:59:36.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.taurendruid.com/2015/01/02/cold-backup-01/</loc>
     <lastmod>2015-01-02T11:10:06.000Z</lastmod>
   </url>
